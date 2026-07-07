@@ -1,0 +1,39 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Anthony Chen</title>
+  <meta name="description" content="Blog posts about projects, research, and ML engineering by Anthony Chen.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container">
+    <h1 class="section-title">Blog</h1>
+    <p class="about-intro">
+      Notes on projects I'm building, research I'm exploring, and lessons from working on
+      large-scale ML systems.
+    </p>
+
+    <div id="blog-list" class="blog-list"></div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/blog.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderNavbar("blog");
+      renderFooter();
+      renderBlogList(document.getElementById("blog-list"));
+    });
+  </script>
+</body>
+</html>
+
+
