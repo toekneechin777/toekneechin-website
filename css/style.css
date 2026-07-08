@@ -446,3 +446,27 @@ a:hover {
     flex-direction: column;
   }
 }
+
+/* ---------- Intro Section (Homepage) ---------- */
+.intro-section {
+  margin-bottom: 56px;
+}
+
+.intro-lede {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.intro-body {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.intro-body:last-child {
+  margin-bottom: 0;
+}

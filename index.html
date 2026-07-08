@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,16 +13,32 @@
   <div class="hero">
     <h1>Anthony Chen</h1>
     <p class="tagline" id="hero-tagline"></p>
-    <div class="hero-cta">
-      <a href="about.html" class="btn btn-primary">About Me</a>
-      <a href="blog.html" class="btn">Read the Blog</a>
-    </div>
     <div class="social-links" id="social-links"></div>
   </div>
 
   <div class="container">
+    <div class="section intro-section">
+      <p class="intro-lede">
+        Hi, I am Anthony. I am a research engineer who loves building things and
+        figuring out how they work.
+      </p>
+      <p class="intro-body">
+        Throughout my career I have been lucky enough to work on some genuinely
+        interesting problems - training foundation models, standing up ML
+        infrastructure, and poking at the edges of what large language models can
+        do. The catch is that a lot of that work I could not talk about. So this
+        site is my way of making up for it: a place to document the things I find
+        interesting, write down what I learn, and share the side projects I tinker
+        with in the evenings.
+      </p>
+      <p class="intro-body">
+        Think of it as a workshop with the door left open. You are welcome to wander
+        in, read the notes pinned to the wall, and see what is on the bench.
+      </p>
+    </div>
+
     <div class="section">
-      <h2 class="section-title">What I'm Working On</h2>
+      <h2 class="section-title">What I am Working On</h2>
       <div class="card">
         <div class="card-title">Foundation Model Training</div>
         <p class="card-subtitle">
@@ -50,7 +65,7 @@
     <div class="section">
       <h2 class="section-title">Recent Posts</h2>
       <div id="recent-posts"></div>
-      <p style="margin-top:16px;"><a href="blog.html">View all posts →</a></p>
+      <p style="margin-top:16px;"><a href="blog.html">View all posts</a></p>
     </div>
   </div>
 
@@ -65,7 +80,6 @@
       renderSocialLinks(document.getElementById("social-links"));
       document.getElementById("hero-tagline").textContent = SITE_CONFIG.tagline;
 
-      // Show 3 most recent posts on homepage
       const container = document.getElementById("recent-posts");
       (async () => {
         const posts = [];
@@ -95,4 +109,3 @@
   </script>
 </body>
 </html>
-
