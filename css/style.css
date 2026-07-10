@@ -568,6 +568,33 @@ a:hover {
   margin-bottom: 0;
 }
 
+.home-interests {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 20px;
+}
+
+.home-interests li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.home-interests li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
 .home-right .social-links {
   margin-top: 32px;
   justify-content: flex-start;
