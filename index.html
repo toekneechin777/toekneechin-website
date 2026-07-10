@@ -1,72 +1,37 @@
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anthony Chen — Research Engineer</title>
-  <meta name="description" content="Anthony Chen — Research Engineer working on foundation models, agentic systems, and ML infrastructure.">
+  <title>Anthony Chen — Tony</title>
+  <meta name="description" content="Anthony (Tony) Chen's personal site — ML tinkerer, curious learner, occasional writer.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="navbar"></div>
 
-  <div class="hero">
-    <h1>Anthony Chen</h1>
-    <p class="tagline" id="hero-tagline"></p>
-    <div class="social-links" id="social-links"></div>
-  </div>
-
-  <div class="container">
-    <div class="section intro-section">
-      <p class="intro-lede">
-        Hi, I am Anthony. I am a research engineer who loves building things and
-        figuring out how they work.
-      </p>
-      <p class="intro-body">
-        Throughout my career I have been lucky enough to work on some genuinely
-        interesting problems - training foundation models, standing up ML
-        infrastructure, and poking at the edges of what large language models can
-        do. The catch is that a lot of that work I could not talk about. So this
-        site is my way of making up for it: a place to document the things I find
-        interesting, write down what I learn, and share the side projects I tinker
-        with in the evenings.
-      </p>
-      <p class="intro-body">
-        Think of it as a workshop with the door left open. You are welcome to wander
-        in, read the notes pinned to the wall, and see what is on the bench.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">What I am Working On</h2>
-      <div class="card">
-        <div class="card-title">Foundation Model Training</div>
-        <p class="card-subtitle">
-          Core model training of large language models for agentic coding use cases,
-          including recursive self-improvement and reinforcement learning infrastructure.
-        </p>
+  <div class="container home-grid">
+    <!-- Left column: photo + blog -->
+    <div class="home-left">
+      <div class="home-photo" id="home-photo">
+        <div class="home-photo-placeholder">photo of me goes here</div>
       </div>
-      <div class="card">
-        <div class="card-title">ML Infrastructure &amp; MLOps</div>
-        <p class="card-subtitle">
-          Scalable training pipelines, optimized inference, and deployment systems
-          spanning Kubernetes, distributed training, and GPU-aware scheduling.
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-title">Research &amp; Publications</div>
-        <p class="card-subtitle">
-          Published work on reward modeling, LLM evaluation, efficient compression,
-          and cross-cultural bias analysis in NLP.
-        </p>
+
+      <div class="section home-blog">
+        <h2 class="section-title">From the blog</h2>
+        <div id="recent-posts"></div>
+        <p class="view-all"><a href="blog.html">all posts &rarr;</a></p>
       </div>
     </div>
 
-    <div class="section">
-      <h2 class="section-title">Recent Posts</h2>
-      <div id="recent-posts"></div>
-      <p style="margin-top:16px;"><a href="blog.html">View all posts</a></p>
-    </div>
+    <!-- Right column: about me -->
+    <aside class="home-right">
+      <h1 class="home-name">Anthony Chen</h1>
+      <p class="home-nick">(my friends call me Tony)</p>
+      <div class="home-bio" id="home-bio"></div>
+      <div class="social-links" id="social-links"></div>
+    </aside>
   </div>
 
   <div id="footer"></div>
@@ -78,7 +43,16 @@
       renderNavbar("home");
       renderFooter();
       renderSocialLinks(document.getElementById("social-links"));
-      document.getElementById("hero-tagline").textContent = SITE_CONFIG.tagline;
+
+      document.getElementById("home-bio").innerHTML = `
+        <p>Hi, I'm Anthony Chen — my friends call me Tony. I'm an ML Research Engineer
+        working on the Gemini models.</p>
+        <p>I personally like learning and doing all parts of the ML stack, which might
+        mean this website feels a little ADHD. A lot of my actual work is hard to share
+        publicly, so I built this site to satisfy my own intellectual curiosity and to
+        share what I learn out in the open.</p>
+        <p>If you spot me frolicking around SF sometime, feel free to say hi — I'm fairly
+        extroverted and love chatting about tech and AI :)</p>`;
 
       const container = document.getElementById("recent-posts");
       (async () => {
@@ -109,3 +83,4 @@
   </script>
 </body>
 </html>
+
