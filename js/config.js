@@ -4,7 +4,7 @@
 const SITE_CONFIG = {
   name: "Anthony Chen",
   email: "achen@anthonylchen.com",
-  tagline: "Research Engineer working on foundation models, agentic systems, and ML infrastructure.",
+  tagline: "ML tinkerer. Curious about all of it.",
   socials: [
     {
       label: "LinkedIn",

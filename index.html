@@ -4,54 +4,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anthony Chen — Research Engineer</title>
-  <meta name="description" content="Anthony Chen — Research Engineer working on foundation models, agentic systems, and ML infrastructure.">
+  <title>Anthony Chen — Tony</title>
+  <meta name="description" content="Anthony (Tony) Chen's personal site — ML tinkerer, curious learner, occasional writer.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="navbar"></div>
 
-  <div class="hero">
-    <h1>Anthony Chen</h1>
-    <p class="tagline" id="hero-tagline"></p>
-    <div class="hero-cta">
-      <a href="about.html" class="btn btn-primary">About Me</a>
-      <a href="blog.html" class="btn">Read the Blog</a>
-    </div>
-    <div class="social-links" id="social-links"></div>
-  </div>
+  <div class="container home-grid">
+    <!-- Left column: photo + blog -->
+    <div class="home-left">
+      <div class="home-photo" id="home-photo">
+        <div class="home-photo-placeholder">photo of me goes here</div>
+      </div>
 
-  <div class="container">
-    <div class="section">
-      <h2 class="section-title">What I'm Working On</h2>
-      <div class="card">
-        <div class="card-title">Foundation Model Training</div>
-        <p class="card-subtitle">
-          Core model training of large language models for agentic coding use cases,
-          including recursive self-improvement and reinforcement learning infrastructure.
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-title">ML Infrastructure &amp; MLOps</div>
-        <p class="card-subtitle">
-          Scalable training pipelines, optimized inference, and deployment systems
-          spanning Kubernetes, distributed training, and GPU-aware scheduling.
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-title">Research &amp; Publications</div>
-        <p class="card-subtitle">
-          Published work on reward modeling, LLM evaluation, efficient compression,
-          and cross-cultural bias analysis in NLP.
-        </p>
+      <div class="section home-blog">
+        <h2 class="section-title">From the blog</h2>
+        <div id="recent-posts"></div>
+        <p class="view-all"><a href="blog.html">all posts &rarr;</a></p>
       </div>
     </div>
 
-    <div class="section">
-      <h2 class="section-title">Recent Posts</h2>
-      <div id="recent-posts"></div>
-      <p style="margin-top:16px;"><a href="blog.html">View all posts →</a></p>
-    </div>
+    <!-- Right column: about me -->
+    <aside class="home-right">
+      <h1 class="home-name">Anthony Chen</h1>
+      <p class="home-nick">(my friends call me Tony)</p>
+      <div class="home-bio" id="home-bio"></div>
+      <div class="social-links" id="social-links"></div>
+    </aside>
   </div>
 
   <div id="footer"></div>
@@ -63,9 +43,27 @@
       renderNavbar("home");
       renderFooter();
       renderSocialLinks(document.getElementById("social-links"));
-      document.getElementById("hero-tagline").textContent = SITE_CONFIG.tagline;
 
-      // Show 3 most recent posts on homepage
+      document.getElementById("home-bio").innerHTML = `
+        <p>Hi, I'm Anthony Chen — my friends call me Tony. I'm an ML Research Engineer
+        working on the Gemini models.</p>
+        <p>I just genuinely enjoy poking at every layer of the ML stack, which probably
+        means this site is going to feel a little all over the place (ADHD-coded, if you
+        will). A lot of what I actually do day-to-day is hard to talk about publicly, so
+        this is my way of staying intellectually honest — learning out loud, writing things
+        down, and sharing whatever falls out.</p>
+        <p>A few things bouncing around my head lately:</p>
+        <ul class="home-interests">
+          <li>RL with denser reward signals</li>
+          <li>scaling beyond text — other data modalities</li>
+          <li>embodied AI</li>
+          <li>chips &amp; kernel engineering</li>
+          <li>continual learning / dynamic memory compaction</li>
+          <li>using AI to figure out how to live forever :P</li>
+        </ul>
+        <p>...and a bunch more. If you spot me frolicking around SF sometime, feel free to
+        say hi — I'm fairly extroverted and love chatting about tech and AI :)</p>`;
+
       const container = document.getElementById("recent-posts");
       (async () => {
         const posts = [];
