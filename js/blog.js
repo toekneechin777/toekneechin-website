@@ -18,6 +18,7 @@
 
 /** Manually list posts here (filename in /posts without extension). */
 const POSTS = [
+  "glm5-2-vs-fable5",
   "welcome",
   "gemini-agentic-coding",
 ];
