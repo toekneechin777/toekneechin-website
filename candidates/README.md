@@ -8,6 +8,7 @@ Each subdirectory is a self-contained candidate website:
 
 | Folder | Purpose |
 |---|---|
+| `model-fable/` | Candidate from Fable model |
 | `model-a/` | Candidate from model A |
 | `model-b/` | Candidate from model B |
 | `model-c/` | Candidate from model C |

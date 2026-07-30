@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anthony Chen — Tony</title>
+  <meta name="description" content="Anthony (Tony) Chen's personal site — ML tinkerer, curious learner, occasional writer.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container home-grid">
+    <!-- Left column: photo + blog -->
+    <div class="home-left">
+      <div class="home-photo" id="home-photo">
+        <div class="home-photo-placeholder">photo of me goes here</div>
+      </div>
+
+      <div class="section home-blog">
+        <h2 class="section-title">From the blog</h2>
+        <div id="recent-posts"></div>
+        <p class="view-all"><a href="blog.html">all posts &rarr;</a></p>
+      </div>
+    </div>
+
+    <!-- Right column: about me -->
+    <aside class="home-right">
+      <h1 class="home-name">Anthony Chen</h1>
+      <p class="home-nick">(my friends call me Tony)</p>
+      <div class="home-bio" id="home-bio"></div>
+      <div class="social-links" id="social-links"></div>
+    </aside>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/blog.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderNavbar("home");
+      renderFooter();
+      renderSocialLinks(document.getElementById("social-links"));
+
+      document.getElementById("home-bio").innerHTML = `
+        <p>Hi, I'm Anthony Chen — my friends call me Tony. I'm an ML Research Engineer
+        working on the Gemini models.</p>
+        <p>I am intellectually curious and interested in every layer of the ML stack, which probably
+        means this blog website might feel a little ADHD. A lot of what I actually do day-to-day is hard to talk about publicly, so
+        this is my way of staying intellectually honest — learning in public, logging my curiosities, and sharing whatever falls out - both successes and failures.</p>
+        <p>A few things bouncing around my head lately:</p>
+        <ul class="home-interests">
+          <li>RL training with denser reward signals (long horizon RL, OPSD, etc.)</li>
+          <li>scaling multi/omni modalities</li>
+          <li>embodied AI & robotics</li>
+          <li>chips &amp; kernel engineering</li>
+          <li>continual learning / dynamic memory compaction</li>
+          <li>democratizing AI to all and using AI to figure out how to live forever :P</li>
+        </ul>
+        <p>...and a bunch more. If you spot me frolicking around SF sometime, feel free to
+        say hi — I'm fairly extroverted and love chatting about tech and AI :)</p>`;
+
+      const container = document.getElementById("recent-posts");
+      (async () => {
+        const posts = [];
+        for (const slug of POSTS) {
+          try { posts.push(await fetchPost(slug)); } catch (e) {}
+        }
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        const recent = posts.slice(0, 3);
+        if (recent.length === 0) {
+          container.innerHTML = '<div class="loading">No posts yet.</div>';
+          return;
+        }
+        container.innerHTML = recent.map(p => `
+          <a class="blog-post-link" href="post.html?slug=${p.slug}">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">${p.title}</div>
+                  <div class="card-subtitle">${p.summary}</div>
+                </div>
+                <div class="card-date">${formatDate(p.date)}</div>
+              </div>
+            </div>
+          </a>`).join("");
+      })();
+    });
+  </script>
+</body>
+</html>
+
