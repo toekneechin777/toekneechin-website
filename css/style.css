@@ -502,7 +502,7 @@ a:hover {
 
 .home-photo {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: linear-gradient(135deg, var(--bg-card), var(--bg-hover));

@@ -20,6 +20,7 @@
 const POSTS = [
   "welcome",
   "gemini-agentic-coding",
+  "joined-google-moved-to-sf",
 ];
 
 /**
