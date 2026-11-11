@@ -12,6 +12,7 @@
   --accent-dim: rgba(108, 198, 255, 0.1);
   --accent-glow: rgba(108, 198, 255, 0.18);
   --green: #3fb950;
+  --update: #c9a227;
   --max-width: 1040px;
   --radius: 8px;
 }
@@ -531,6 +532,75 @@ a:hover {
 
 .home-blog .section-title {
   margin-bottom: 20px;
+}
+
+/* ---------- Recent Updates feed ---------- */
+.feed-link {
+  display: block;
+  color: inherit;
+}
+
+.feed-link:hover {
+  color: inherit;
+}
+
+.feed-link:hover .feed-item--post {
+  border-color: var(--accent);
+}
+
+.feed-item {
+  padding: 16px 0 16px 14px;
+  margin-bottom: 4px;
+  border-left: 2px solid var(--border);
+}
+
+.feed-item--update {
+  border-left-color: var(--update);
+}
+
+.feed-item--post {
+  border-left-color: var(--accent);
+  transition: border-color 0.2s;
+}
+
+.feed-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.feed-kind {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.feed-item--update .feed-kind {
+  color: var(--update);
+}
+
+.feed-item--post .feed-kind {
+  color: var(--accent);
+}
+
+.feed-date {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.feed-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.feed-summary {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .view-all {

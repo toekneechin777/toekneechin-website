@@ -20,7 +20,6 @@
 const POSTS = [
   "welcome",
   "gemini-agentic-coding",
-  "joined-google-moved-to-sf",
 ];
 
 /**
@@ -250,7 +249,68 @@ async function renderPost(container) {
   }
 }
 
+/**
+ * Homepage feed: merge short updates + recent posts, newest first.
+ * Updates are status notes (not clickable). Posts link to the blog.
+ */
+async function renderRecentFeed(container, limit = 5) {
+  if (!container) return;
+
+  const updates = (SITE_CONFIG.updates || []).map((u) => ({
+    kind: "update",
+    date: u.date,
+    title: u.title,
+    summary: u.text,
+  }));
+
+  const posts = [];
+  for (const slug of POSTS) {
+    try {
+      const p = await fetchPost(slug);
+      posts.push({
+        kind: "post",
+        date: p.date,
+        title: p.title,
+        summary: p.summary,
+        slug: p.slug,
+      });
+    } catch (e) {
+      console.warn(e.message);
+    }
+  }
+
+  const items = [...updates, ...posts]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, limit);
+
+  if (items.length === 0) {
+    container.innerHTML = '<div class="loading">No updates yet.</div>';
+    return;
+  }
+
+  container.innerHTML = items
+    .map((item) => {
+      const kindLabel = item.kind === "post" ? "Post" : "Update";
+      const body = `
+        <div class="feed-item feed-item--${item.kind}">
+          <div class="feed-meta">
+            <span class="feed-kind">${kindLabel}</span>
+            <span class="feed-date">${formatDate(item.date)}</span>
+          </div>
+          <div class="feed-title">${item.title}</div>
+          <div class="feed-summary">${item.summary}</div>
+        </div>`;
+      if (item.kind === "post") {
+        return `<a class="feed-link" href="post.html?slug=${item.slug}">${body}</a>`;
+      }
+      return body;
+    })
+    .join("");
+}
+
 window.renderBlogList = renderBlogList;
 window.renderPost = renderPost;
+window.renderRecentFeed = renderRecentFeed;
 window.markdownToHtml = markdownToHtml;
+window.formatDate = formatDate;
 

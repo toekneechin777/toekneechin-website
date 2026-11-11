@@ -5,6 +5,17 @@ const SITE_CONFIG = {
   name: "Anthony Chen",
   email: "achen@anthonylchen.com",
   tagline: "ML tinkerer. Curious about all of it.",
+  /**
+   * Short life/status notes for the homepage Recent Updates feed.
+   * These are NOT blog posts — use posts/ for longer writing.
+   */
+  updates: [
+    {
+      date: "2025-12-01",
+      title: "Joined Google, moved to SF",
+      text: "Started helping train Gemini for coding / agentic use cases — and packed up for San Francisco.",
+    },
+  ],
   socials: [
     {
       label: "LinkedIn",
