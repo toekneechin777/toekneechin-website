@@ -7,28 +7,14 @@ summary: A quick intro to this blog and what I plan to write about.
 
 Welcome! This is the first post on my personal website.
 
-I'll be using this space to write about:
+A lot of the work people do in AI these days is hard to talk about publicly — constraints at work, confidential research, timing. I still want a place to stay intellectually honest, so I'm using this blog to share what I learn and build on the side: curiosities, experiments, and the stuff that doesn't fit neatly into a job update.
 
-- **Foundation model training** — lessons from training large language models at scale
+I'll be writing about:
+
+- **Learning in public** — notes from following (and occasionally poking at) frontier research
 - **ML infrastructure** — building efficient training and inference pipelines
 - **Research projects** — experiments, ablations, and findings
 - **Side projects** — things I'm hacking on outside of work
-
-## How This Blog Works
-
-This blog is powered by plain Markdown files. Each post lives in the `posts/` directory as a `.md` file with a small bit of metadata at the top:
-
-```
----
-title: My Post Title
-date: 2025-07-01
-tags: [ML, Research]
-summary: A short description for the blog list.
----
-
-Write your post content here in Markdown...
-```
-
-To create a new post, just drop a new `.md` file into the `posts/` folder and add its name to the `POSTS` array in `js/blog.js`. That's it — it'll show up automatically.
+- **Personal thoughts & reflections** — slice-of-life, career moments, and whatever else is bouncing around my head
 
 Thanks for stopping by!
