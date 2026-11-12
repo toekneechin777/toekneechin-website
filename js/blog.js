@@ -19,14 +19,14 @@
 /** Manually list posts here (filename in /posts without extension). */
 const POSTS = [
   "welcome",
-  "gemini-agentic-coding",
 ];
 
 /**
  * Parse front matter + markdown body from raw text.
  */
 function parsePost(raw, slug) {
-  const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  // Allow leading blank lines and CRLF (common in checked-in markdown).
+  const fmMatch = raw.match(/^\s*---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!fmMatch) {
     return { slug, title: slug, date: "", tags: [], summary: "", body: raw };
   }

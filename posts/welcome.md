@@ -1,4 +1,3 @@
-
 ---
 title: Welcome to My Blog
 date: 2025-07-01
@@ -33,4 +32,3 @@ Write your post content here in Markdown...
 To create a new post, just drop a new `.md` file into the `posts/` folder and add its name to the `POSTS` array in `js/blog.js`. That's it — it'll show up automatically.
 
 Thanks for stopping by!
-

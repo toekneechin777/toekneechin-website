@@ -36,7 +36,6 @@ Write your post in Markdown here...
 ```js
 const POSTS = [
   "welcome",
-  "gemini-agentic-coding",
   "my-project",  // <-- add here
 ];
 ```
