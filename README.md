@@ -7,17 +7,11 @@ A personal website with a homepage, about page, and a markdown-powered blog.
 ```
 website/
 ├── index.html        # Homepage
-├── about.html        # About page (experience, education, publications, skills)
-├── blog.html         # Blog listing page
-├── post.html         # Individual blog post renderer
-├── css/
-│   └── style.css     # All styling
-├── js/
-│   ├── config.js     # Site config (name, social links, navbar, footer)
-│   └── blog.js       # Blog engine (markdown parsing, post rendering)
-├── posts/
-│   ├── welcome.md
-│   └── gemini-agentic-coding.md
+├── about.html        # About page
+├── blog.html / post.html
+├── css/ js/ images/ posts/
+├── infra/            # Terraform (S3 + CloudFront + ACM + Route 53)
+├── scripts/deploy.sh # Sync site + invalidate CDN
 └── README.md
 ```
 
@@ -65,6 +59,42 @@ python3 -m http.server 8000
 
 Then visit `http://localhost:8000`.
 
-## Deploying
+## Hosting on AWS (Terraform)
 
-Push to GitHub and enable GitHub Pages, or deploy to any static host (Netlify, Vercel, etc.).
+Stack: **S3** (files) + **CloudFront** (HTTPS CDN) + **ACM** (cert) + **Route 53** (DNS).
+Domain is assumed registered at GoDaddy; DNS is moved to Route 53 via nameservers.
+
+### 1. Install tools + log in
+
+```bash
+brew install awscli
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
+aws configure   # Access Key ID, Secret, region (e.g. us-west-2)
+aws sts get-caller-identity
+```
+
+### 2. Deploy infrastructure
+
+```bash
+cd infra
+cp terraform.tfvars.example terraform.tfvars   # edit domain if needed
+terraform init
+terraform apply
+```
+
+`apply` prints **nameservers**. In GoDaddy: Domain → DNS → Nameservers → change to custom → paste the 4 NS values from Terraform. Wait for DNS (often ~15–60 min; can be longer).
+
+Until NS propagate, you can still preview via the `cloudfront_domain_name` output.
+
+### 3. Upload the site
+
+```bash
+./scripts/deploy.sh
+```
+
+Re-run that script whenever you change HTML/CSS/JS/posts/images.
+
+### Adding a short homepage update
+
+Edit `SITE_CONFIG.updates` in `js/config.js` (not a blog post), then redeploy.

@@ -1,2 +1,12 @@
 .DS_Store
 .tmp-py/
+
+# Terraform
+infra/.terraform/
+infra/.terraform.lock.hcl
+infra/*.tfstate
+infra/*.tfstate.*
+infra/terraform.tfvars
+infra/crash.log
+infra/override.tf
+infra/restore-mx.json
